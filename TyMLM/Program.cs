@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing.Text;
 using System.IO;
 using System.Linq;
@@ -8,11 +9,12 @@ using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Ty_Speedrun_Memory_Handler
+namespace TyMemoryLeakManager
 {
     internal static class Program
     {
-
+        public static TyMLM tyMLM;
+        
         [DllImport("gdi32.dll")]
         private static extern IntPtr AddFontMemResourceEx(IntPtr pbFont, uint cbFont, IntPtr pdv, [In] ref uint pcFonts);
 
@@ -22,7 +24,8 @@ namespace Ty_Speedrun_Memory_Handler
             Application.EnableVisualStyles();
             GenerateFont();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TyMLM());
+            tyMLM = new TyMLM();
+            Application.Run(tyMLM);
         }
 
         static void GenerateFont()

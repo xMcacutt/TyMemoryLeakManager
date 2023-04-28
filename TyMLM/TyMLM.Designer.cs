@@ -2,7 +2,7 @@
 using System.Drawing.Text;
 using System.Windows.Forms;
 
-namespace Ty_Speedrun_Memory_Handler
+namespace TyMemoryLeakManager
 {
     partial class TyMLM
     {
@@ -39,10 +39,9 @@ namespace Ty_Speedrun_Memory_Handler
             this.CategoryLabel = new System.Windows.Forms.Label();
             this.MemUsageLabel = new System.Windows.Forms.Label();
             this.MemUsage = new System.Windows.Forms.Label();
-            this.MemUseBar = new System.Windows.Forms.ProgressBar();
+            this.MemUseBar = new PredictiveProgressBar();
             this.SeverityLabel = new System.Windows.Forms.Label();
             this.Severity = new System.Windows.Forms.Label();
-            this.RestartButton = new System.Windows.Forms.Button();
             this.LayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.LayoutPanel.SuspendLayout();
             this.SuspendLayout();
@@ -55,21 +54,19 @@ namespace Ty_Speedrun_Memory_Handler
             this.Category.FormattingEnabled = true;
             this.Category.Items.AddRange(new object[] {
             "Any%",
-            "51TE",
+            "51TEGS",
             "100%",
             "Max%",
-            "Cheat%",
             "Cheat% All Levels",
-            "One-Rang",
-            "Opalless",
             "All Golden Cogs",
             "Save The Bilbies",
             "All Rainbow Scales"});
-            this.Category.Location = new System.Drawing.Point(3, 23);
+            this.Category.Location = new System.Drawing.Point(3, 26);
             this.Category.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
             this.Category.Name = "Category";
-            this.Category.Size = new System.Drawing.Size(269, 21);
+            this.Category.Size = new System.Drawing.Size(269, 24);
             this.Category.TabIndex = 1;
+            this.Category.SelectedIndexChanged += new System.EventHandler(this.CategoryChanged);
             // 
             // CategoryLabel
             // 
@@ -77,7 +74,7 @@ namespace Ty_Speedrun_Memory_Handler
             this.CategoryLabel.Location = new System.Drawing.Point(3, 3);
             this.CategoryLabel.Margin = new System.Windows.Forms.Padding(3);
             this.CategoryLabel.Name = "CategoryLabel";
-            this.CategoryLabel.Size = new System.Drawing.Size(50, 17);
+            this.CategoryLabel.Size = new System.Drawing.Size(59, 20);
             this.CategoryLabel.TabIndex = 0;
             this.CategoryLabel.Text = "Category";
             this.CategoryLabel.UseCompatibleTextRendering = true;
@@ -85,10 +82,10 @@ namespace Ty_Speedrun_Memory_Handler
             // MemUsageLabel
             // 
             this.MemUsageLabel.AutoSize = true;
-            this.MemUsageLabel.Location = new System.Drawing.Point(3, 64);
+            this.MemUsageLabel.Location = new System.Drawing.Point(3, 70);
             this.MemUsageLabel.Margin = new System.Windows.Forms.Padding(3, 10, 3, 5);
             this.MemUsageLabel.Name = "MemUsageLabel";
-            this.MemUsageLabel.Size = new System.Drawing.Size(78, 13);
+            this.MemUsageLabel.Size = new System.Drawing.Size(100, 16);
             this.MemUsageLabel.TabIndex = 2;
             this.MemUsageLabel.Text = "Memory Usage";
             // 
@@ -98,10 +95,10 @@ namespace Ty_Speedrun_Memory_Handler
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MemUsage.AutoSize = true;
-            this.MemUsage.Location = new System.Drawing.Point(3, 87);
+            this.MemUsage.Location = new System.Drawing.Point(3, 96);
             this.MemUsage.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.MemUsage.Name = "MemUsage";
-            this.MemUsage.Size = new System.Drawing.Size(269, 13);
+            this.MemUsage.Size = new System.Drawing.Size(269, 16);
             this.MemUsage.TabIndex = 3;
             this.MemUsage.Text = "Open Ty";
             this.MemUsage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -111,20 +108,23 @@ namespace Ty_Speedrun_Memory_Handler
             this.MemUseBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MemUseBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.MemUseBar.Location = new System.Drawing.Point(3, 110);
+            this.MemUseBar.Location = new System.Drawing.Point(3, 122);
             this.MemUseBar.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.MemUseBar.Maximum = 1333;
+            this.MemUseBar.MemValue = 200;
             this.MemUseBar.Name = "MemUseBar";
+            this.MemUseBar.PredictedColor = System.Drawing.Color.DarkGreen;
+            this.MemUseBar.PredictedValue = 1400;
             this.MemUseBar.Size = new System.Drawing.Size(269, 21);
             this.MemUseBar.TabIndex = 4;
             // 
             // SeverityLabel
             // 
             this.SeverityLabel.AutoSize = true;
-            this.SeverityLabel.Location = new System.Drawing.Point(3, 141);
+            this.SeverityLabel.Location = new System.Drawing.Point(3, 153);
             this.SeverityLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.SeverityLabel.Name = "SeverityLabel";
-            this.SeverityLabel.Size = new System.Drawing.Size(45, 13);
+            this.SeverityLabel.Size = new System.Drawing.Size(56, 16);
             this.SeverityLabel.TabIndex = 5;
             this.SeverityLabel.Text = "Severity";
             // 
@@ -132,26 +132,13 @@ namespace Ty_Speedrun_Memory_Handler
             // 
             this.Severity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Severity.AutoSize = true;
-            this.Severity.Location = new System.Drawing.Point(130, 164);
+            this.Severity.Location = new System.Drawing.Point(99, 179);
             this.Severity.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Severity.Name = "Severity";
-            this.Severity.Size = new System.Drawing.Size(142, 13);
+            this.Severity.Size = new System.Drawing.Size(173, 16);
             this.Severity.TabIndex = 6;
             this.Severity.Text = "Low - !! Full Runs Remaining";
             this.Severity.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // RestartButton
-            // 
-            this.RestartButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.RestartButton.Location = new System.Drawing.Point(3, 187);
-            this.RestartButton.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.RestartButton.Name = "RestartButton";
-            this.RestartButton.Size = new System.Drawing.Size(269, 36);
-            this.RestartButton.TabIndex = 7;
-            this.RestartButton.Text = "Restart Ty";
-            this.RestartButton.UseVisualStyleBackColor = true;
             // 
             // LayoutPanel
             // 
@@ -169,10 +156,9 @@ namespace Ty_Speedrun_Memory_Handler
             this.LayoutPanel.Controls.Add(this.SeverityLabel, 0, 5);
             this.LayoutPanel.Controls.Add(this.MemUsage, 0, 3);
             this.LayoutPanel.Controls.Add(this.MemUseBar, 0, 4);
-            this.LayoutPanel.Controls.Add(this.RestartButton, 0, 7);
             this.LayoutPanel.Location = new System.Drawing.Point(12, 12);
             this.LayoutPanel.Name = "LayoutPanel";
-            this.LayoutPanel.RowCount = 8;
+            this.LayoutPanel.RowCount = 7;
             this.LayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.LayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.LayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -180,17 +166,17 @@ namespace Ty_Speedrun_Memory_Handler
             this.LayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.LayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.LayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.LayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.LayoutPanel.Size = new System.Drawing.Size(275, 228);
+            this.LayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.LayoutPanel.Size = new System.Drawing.Size(275, 200);
             this.LayoutPanel.TabIndex = 8;
             // 
             // TyMLM
             // 
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(299, 246);
+            this.ClientSize = new System.Drawing.Size(299, 220);
             this.Controls.Add(this.LayoutPanel);
-            this.MinimumSize = new System.Drawing.Size(315, 200);
+            this.MinimumSize = new System.Drawing.Size(315, 0);
             this.Name = "TyMLM";
             this.LayoutPanel.ResumeLayout(false);
             this.LayoutPanel.PerformLayout();
@@ -205,10 +191,9 @@ namespace Ty_Speedrun_Memory_Handler
         private Label CategoryLabel;
         private Label MemUsageLabel;
         private Label MemUsage;
-        private ProgressBar MemUseBar;
+        private PredictiveProgressBar MemUseBar;
         private Label SeverityLabel;
         private Label Severity;
-        private Button RestartButton;
         private TableLayoutPanel LayoutPanel;
     }
 }
