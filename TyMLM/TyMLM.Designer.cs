@@ -35,14 +35,15 @@ namespace TyMemoryLeakManager
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TyMLM));
             this.Category = new System.Windows.Forms.ComboBox();
             this.CategoryLabel = new System.Windows.Forms.Label();
             this.MemUsageLabel = new System.Windows.Forms.Label();
             this.MemUsage = new System.Windows.Forms.Label();
-            this.MemUseBar = new PredictiveProgressBar();
             this.SeverityLabel = new System.Windows.Forms.Label();
             this.Severity = new System.Windows.Forms.Label();
             this.LayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.MemUseBar = new PredictiveProgressBar();
             this.LayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,21 +104,6 @@ namespace TyMemoryLeakManager
             this.MemUsage.Text = "Open Ty";
             this.MemUsage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // MemUseBar
-            // 
-            this.MemUseBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.MemUseBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.MemUseBar.Location = new System.Drawing.Point(3, 110);
-            this.MemUseBar.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.MemUseBar.Maximum = 1550;
-            this.MemUseBar.MemValue = 200;
-            this.MemUseBar.Name = "MemUseBar";
-            this.MemUseBar.PredictedColor = System.Drawing.Color.DarkGreen;
-            this.MemUseBar.PredictedValue = 1400;
-            this.MemUseBar.Size = new System.Drawing.Size(269, 21);
-            this.MemUseBar.TabIndex = 4;
-            // 
             // SeverityLabel
             // 
             this.SeverityLabel.AutoSize = true;
@@ -170,14 +156,31 @@ namespace TyMemoryLeakManager
             this.LayoutPanel.Size = new System.Drawing.Size(275, 182);
             this.LayoutPanel.TabIndex = 8;
             // 
+            // MemUseBar
+            // 
+            this.MemUseBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MemUseBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.MemUseBar.Location = new System.Drawing.Point(3, 110);
+            this.MemUseBar.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.MemUseBar.Maximum = 1550;
+            this.MemUseBar.MemValue = 200;
+            this.MemUseBar.Name = "MemUseBar";
+            this.MemUseBar.PredictedColor = System.Drawing.Color.DarkGreen;
+            this.MemUseBar.PredictedValue = 1400;
+            this.MemUseBar.Size = new System.Drawing.Size(269, 21);
+            this.MemUseBar.TabIndex = 4;
+            // 
             // TyMLM
             // 
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(299, 220);
             this.Controls.Add(this.LayoutPanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(315, 0);
             this.Name = "TyMLM";
+            this.Text = "TyMLM";
             this.LayoutPanel.ResumeLayout(false);
             this.LayoutPanel.PerformLayout();
             this.ResumeLayout(false);
