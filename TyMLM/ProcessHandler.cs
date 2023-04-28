@@ -32,11 +32,6 @@ namespace TyMemoryLeakManager
         public static void Initialize()
         {
             HasFolderPath = SettingsHandler.Settings.TyFolderPath != "";
-            if (HasFolderPath && SettingsHandler.Settings.AutoLaunchTyOnStartup)
-            {
-                if (!FindTyProcess())
-                    RestartTy();
-            }
         }
 
         public static int GetProcessMemory()

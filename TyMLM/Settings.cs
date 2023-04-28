@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 namespace TyMemoryLeakManager
 { 
     internal class Settings
-    {
-        public bool AutoLaunchTyOnStartup { get; set; }
+    { 
         public string TyFolderPath { get; set; }
     }
 }
