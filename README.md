@@ -12,6 +12,8 @@ Next time you start TyMLM, it will automatically open Ty for you.
 
 To close Ty, first close TyMLM. Then you'll be able to cleanly exit Ty.
 
+If you want to run the game with launch arguments, you can add them to Arguments.txt.
+
 ## Usage
 The light green bar displays the current memory usage of Ty.
 
