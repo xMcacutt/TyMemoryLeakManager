@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace TyMemoryLeakManager
@@ -54,6 +55,16 @@ namespace TyMemoryLeakManager
         public static bool RestartTy()
         {
             TyMLM.AllowSound = true;
+            string[] argsFile = System.IO.File.ReadAllLines("./Arguments.txt");
+            string arguments = "";
+            foreach(string line in argsFile)
+            {
+                if (line.StartsWith("-"))
+                {
+                    arguments += Regex.Replace(line, @"\s+", "");
+                    arguments += " ";
+                }
+            }
             TyProcess = new Process
             {
                 StartInfo = new ProcessStartInfo(SettingsHandler.Settings.TyFolderPath)
@@ -61,6 +72,7 @@ namespace TyMemoryLeakManager
                     UseShellExecute = false,
                     RedirectStandardError = true,
                     RedirectStandardOutput = true,
+                    Arguments = arguments,
                     WorkingDirectory = System.IO.Path.GetDirectoryName(SettingsHandler.Settings.TyFolderPath)
                 }
             };
