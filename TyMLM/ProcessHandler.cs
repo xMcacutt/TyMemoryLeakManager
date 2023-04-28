@@ -58,6 +58,7 @@ namespace TyMemoryLeakManager
 
         public static bool RestartTy()
         {
+            TyMLM.AllowSound = true;
             TyProcess = new Process
             {
                 StartInfo = new ProcessStartInfo(SettingsHandler.Settings.TyFolderPath)

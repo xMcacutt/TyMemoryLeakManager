@@ -61,10 +61,10 @@ namespace TyMemoryLeakManager
             "All Golden Cogs",
             "Save The Bilbies",
             "All Rainbow Scales"});
-            this.Category.Location = new System.Drawing.Point(3, 26);
+            this.Category.Location = new System.Drawing.Point(3, 23);
             this.Category.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
             this.Category.Name = "Category";
-            this.Category.Size = new System.Drawing.Size(269, 24);
+            this.Category.Size = new System.Drawing.Size(269, 21);
             this.Category.TabIndex = 1;
             this.Category.SelectedIndexChanged += new System.EventHandler(this.CategoryChanged);
             // 
@@ -74,7 +74,7 @@ namespace TyMemoryLeakManager
             this.CategoryLabel.Location = new System.Drawing.Point(3, 3);
             this.CategoryLabel.Margin = new System.Windows.Forms.Padding(3);
             this.CategoryLabel.Name = "CategoryLabel";
-            this.CategoryLabel.Size = new System.Drawing.Size(59, 20);
+            this.CategoryLabel.Size = new System.Drawing.Size(50, 17);
             this.CategoryLabel.TabIndex = 0;
             this.CategoryLabel.Text = "Category";
             this.CategoryLabel.UseCompatibleTextRendering = true;
@@ -82,10 +82,10 @@ namespace TyMemoryLeakManager
             // MemUsageLabel
             // 
             this.MemUsageLabel.AutoSize = true;
-            this.MemUsageLabel.Location = new System.Drawing.Point(3, 70);
+            this.MemUsageLabel.Location = new System.Drawing.Point(3, 64);
             this.MemUsageLabel.Margin = new System.Windows.Forms.Padding(3, 10, 3, 5);
             this.MemUsageLabel.Name = "MemUsageLabel";
-            this.MemUsageLabel.Size = new System.Drawing.Size(100, 16);
+            this.MemUsageLabel.Size = new System.Drawing.Size(78, 13);
             this.MemUsageLabel.TabIndex = 2;
             this.MemUsageLabel.Text = "Memory Usage";
             // 
@@ -95,10 +95,10 @@ namespace TyMemoryLeakManager
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MemUsage.AutoSize = true;
-            this.MemUsage.Location = new System.Drawing.Point(3, 96);
+            this.MemUsage.Location = new System.Drawing.Point(3, 87);
             this.MemUsage.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.MemUsage.Name = "MemUsage";
-            this.MemUsage.Size = new System.Drawing.Size(269, 16);
+            this.MemUsage.Size = new System.Drawing.Size(269, 13);
             this.MemUsage.TabIndex = 3;
             this.MemUsage.Text = "Open Ty";
             this.MemUsage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -108,9 +108,9 @@ namespace TyMemoryLeakManager
             this.MemUseBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MemUseBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.MemUseBar.Location = new System.Drawing.Point(3, 122);
+            this.MemUseBar.Location = new System.Drawing.Point(3, 110);
             this.MemUseBar.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.MemUseBar.Maximum = 1333;
+            this.MemUseBar.Maximum = 1550;
             this.MemUseBar.MemValue = 200;
             this.MemUseBar.Name = "MemUseBar";
             this.MemUseBar.PredictedColor = System.Drawing.Color.DarkGreen;
@@ -121,10 +121,10 @@ namespace TyMemoryLeakManager
             // SeverityLabel
             // 
             this.SeverityLabel.AutoSize = true;
-            this.SeverityLabel.Location = new System.Drawing.Point(3, 153);
+            this.SeverityLabel.Location = new System.Drawing.Point(3, 141);
             this.SeverityLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.SeverityLabel.Name = "SeverityLabel";
-            this.SeverityLabel.Size = new System.Drawing.Size(56, 16);
+            this.SeverityLabel.Size = new System.Drawing.Size(45, 13);
             this.SeverityLabel.TabIndex = 5;
             this.SeverityLabel.Text = "Severity";
             // 
@@ -132,10 +132,10 @@ namespace TyMemoryLeakManager
             // 
             this.Severity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Severity.AutoSize = true;
-            this.Severity.Location = new System.Drawing.Point(99, 179);
+            this.Severity.Location = new System.Drawing.Point(130, 164);
             this.Severity.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Severity.Name = "Severity";
-            this.Severity.Size = new System.Drawing.Size(173, 16);
+            this.Severity.Size = new System.Drawing.Size(142, 13);
             this.Severity.TabIndex = 6;
             this.Severity.Text = "Low - !! Full Runs Remaining";
             this.Severity.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -167,7 +167,7 @@ namespace TyMemoryLeakManager
             this.LayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.LayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.LayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.LayoutPanel.Size = new System.Drawing.Size(275, 200);
+            this.LayoutPanel.Size = new System.Drawing.Size(275, 182);
             this.LayoutPanel.TabIndex = 8;
             // 
             // TyMLM

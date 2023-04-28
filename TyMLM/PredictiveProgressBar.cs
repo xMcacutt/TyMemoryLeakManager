@@ -21,8 +21,7 @@ public class PredictiveProgressBar : ProgressBar
         ProgressBarRenderer.DrawHorizontalBar(e.Graphics, rect);
 
         int mainWidth = (int)((rect.Width / (double)Maximum) * MemValue);
-        pRect.X += mainWidth; // Adjust the position of the predictive rectangle
-        pRect.Width = (int)(((rect.Width - mainWidth) / (double)Maximum) * PredictedValue); // Calculate the width of the predictive rectangle based on the remaining space
+        pRect.Width = (int)(((rect.Width) / (double)Maximum) * (PredictedValue + MemValue)); // Calculate the width of the predictive rectangle based on the remaining space
 
         if (pRect.Width > 0)
         {

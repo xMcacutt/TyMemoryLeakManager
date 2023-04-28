@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Reflection.Emit;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
@@ -15,6 +16,7 @@ namespace TyMemoryLeakManager
 {
     public partial class TyMLM: Form
     {
+        public static bool AllowSound = true;
         public TyMLM()
         {
             InitializeComponent();
@@ -87,25 +89,30 @@ namespace TyMemoryLeakManager
                 MemUsage.Text = currentUsage.ToString() + "MB";
                 MemUsage.Refresh();
             });
-            //System.Windows.Forms.Application.DoEvents();
             int predictedUsage = currentUsage + memValue;
-            int remainingSpace = 1400 - currentUsage;
+            int remainingSpace = 1550 - currentUsage;
             float remainingRuns = (float)((float)remainingSpace / (float)memValue);
             string msg;
             Color color;
-            if(remainingRuns > 1)
+            if(remainingRuns > 1.5)
             {
                 msg = "Low - Safe To Continue Runs! ";
                 color = Color.DarkGreen;
             }
-            else if(remainingRuns > 0)
+            else if(remainingRuns > 1)
             {
                 msg = "Mid - Safe To Continue Runs! ";
-                color = Color.DarkGoldenrod;
+                color = Colors.DeepGold;
             }
             else
             {
-                msg = "High - Do NOT Start Another Run! "; 
+                msg = "High - Do NOT Start Another Run! ";
+                if (AllowSound)
+                {
+                    SoundPlayer player = new SoundPlayer("./Alert.wav");
+                    player.Play();
+                    AllowSound = false;
+                }
                 color = Color.DarkRed;
             }
             msg += '\n';
@@ -118,14 +125,15 @@ namespace TyMemoryLeakManager
             MemUseBar.BeginInvoke(new Action(() => {
                 MemUseBar.MemValue = currentUsage;
                 MemUseBar.PredictedValue = memValue;
-                MemUseBar.Refresh();
                 MemUseBar.PredictedColor = color;
+                MemUseBar.Refresh();
             }));
             
         }
 
         private void CategoryChanged(object sender, EventArgs e)
         {
+            AllowSound = true;
             if (!ProcessHandler.HasTyProcess) return;
             int memValue;
             switch (Category.Text)
