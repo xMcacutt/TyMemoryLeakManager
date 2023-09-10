@@ -74,8 +74,6 @@
   <ItemGroup>
     <Compile Include="Categories.cs" />
     <Compile Include="Colors.cs" />
-    <Compile Include="LevelData.cs" />
-    <Compile Include="LevelHandler.cs" />
     <Compile Include="PredictiveProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>

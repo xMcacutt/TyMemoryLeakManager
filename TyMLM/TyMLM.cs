@@ -8,6 +8,7 @@ using System.Media;
 using System.Reflection.Emit;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
@@ -34,11 +35,17 @@ namespace TyMemoryLeakManager
         {
             while (true)
             {
-                while (!ProcessHandler.HasTyProcess)
+                if (!ProcessHandler.HasTyProcess)
                 {
                     ProcessHandler.FindTyProcess();
+                    Console.WriteLine("Finding process...");
                 }
-                SetData();
+                else
+                {
+                    SetData();
+                }
+                
+                Thread.Sleep(250);
             }
         }
 
@@ -49,7 +56,6 @@ namespace TyMemoryLeakManager
 
         public void SetData()
         {
-            if (!ProcessHandler.HasTyProcess) return;
             int memValue = 0;
             Category.Invoke((MethodInvoker)delegate {
                 switch (Category.Text)
@@ -107,13 +113,13 @@ namespace TyMemoryLeakManager
             else
             {
                 msg = "High - Do NOT Start Another Run! ";
+                color = Color.DarkRed;
                 if (AllowSound)
                 {
                     SoundPlayer player = new SoundPlayer("./Alert.wav");
                     player.Play();
                     AllowSound = false;
                 }
-                color = Color.DarkRed;
             }
             msg += '\n';
             msg += remainingRuns.ToString();
