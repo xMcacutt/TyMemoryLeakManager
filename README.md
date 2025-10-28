@@ -1,6 +1,9 @@
 # TyMemoryLeakManager
 Visualise and act on the memory leak within Ty. Mainly for speedrunners.
 
+## Sunset
+This repository has been archived in favor of a [plugin for the new Tyger Framework](https://github.com/xMcacutt/Ty-MLM-Plugin)
+
 ## Getting Started
 Unzip the folder and launch "Ty Memory Leak Manager.exe"
 
